@@ -11,15 +11,14 @@ short getAsyncKeyState(int keyCode) {
 }
 
 int setConsoleCursorPos(short x, short y) {
-    HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD coord = { x, y };
-    return SetConsoleCursorPosition(handle, coord);
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    return SetConsoleCursorPosition(hStdOut, (COORD) { x, y });
 }
 
 Coord getConsoleCursorPos() {
     CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
-    HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (!GetConsoleScreenBufferInfo(hStd, &screenBufferInfo)) {
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (!GetConsoleScreenBufferInfo(hStdOut, &screenBufferInfo)) {
         return (Coord) { -1, -1 };
     }
     return (Coord) { screenBufferInfo.dwCursorPosition.X, screenBufferInfo.dwCursorPosition.Y };
@@ -27,8 +26,8 @@ Coord getConsoleCursorPos() {
 
 Coord getConsoleDims() {
     CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
-    HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
-    if (!GetConsoleScreenBufferInfo(hStd, &screenBufferInfo)) {
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (!GetConsoleScreenBufferInfo(hStdOut, &screenBufferInfo)) {
         return (Coord) { -1, -1 };
     }
 
@@ -47,9 +46,9 @@ int clearScreen() {
 }
 
 int setConsoleCursorVisibility(int visible) {
-    HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
+    HANDLE hStdOut = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
-    if(!GetConsoleCursorInfo(out, &cursorInfo)) return 0;
+    if(!GetConsoleCursorInfo(hStdOut, &cursorInfo)) return 0;
     cursorInfo.bVisible = visible;
-    return SetConsoleCursorInfo(out, &cursorInfo);
+    return SetConsoleCursorInfo(hStdOut, &cursorInfo);
 }
