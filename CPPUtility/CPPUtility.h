@@ -5,9 +5,14 @@
     #define DLLINTERFACE// __declspec(dllimport)
 #endif
 
+DLLINTERFACE typedef struct _Coord {
+    short X, Y;
+} Coord;
+
 DLLINTERFACE short getKeyState(int keycode); 
 DLLINTERFACE short getAsyncKeyState(int keycode);
-DLLINTERFACE int setCursorPos(short x, short y);
+DLLINTERFACE int setConsoleCursorPos(short x, short y);
+DLLINTERFACE Coord getConsoleCursorPos();
 DLLINTERFACE long getLastError();
 DLLINTERFACE int clearScreen();
 DLLINTERFACE int setConsoleCursorVisibility(int visible);
