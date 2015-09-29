@@ -4,10 +4,19 @@ using Reexport
 @reexport using CPPUtility
 export printat
 
-function printat(msg::AbstractString, x::Int16, y::Int16)
+function printat_helper(printFunction::Function, msg::AbstractString, x::Int16, y::Int16)
     currentPos = get_console_cursor_pos()
     set_console_cursor_pos(x, y)
-    print(msg)
+    printFunction(msg)
     set_console_cursor_pos(currentPos...)
 end
+
+function printat(msg::AbstractString, x::Int16, y::Int16)
+    printat_common(print, msg, x, y)
+end
+
+function printat(msg::AbstractString, x::Int16, y::Int16, color::Symbol)
+    printat_common(str -> print_with_color(x, color), msg, x, y)
+end
+
 end

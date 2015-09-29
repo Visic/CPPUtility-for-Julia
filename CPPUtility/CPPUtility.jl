@@ -1,5 +1,5 @@
 module CPPUtility
-export getkeystate, get_async_key_state, set_console_cursor_pos, get_console_cursor_pos, getlasterror, clearscreen, set_console_cursor_visibility
+export getkeystate, get_async_key_state, set_console_cursor_pos, get_console_cursor_pos, getlasterror, clearscreen, set_console_cursor_visibility, getconsoledims
 
 const dllName = "CPPUtility.dll"
 
@@ -17,6 +17,11 @@ set_console_cursor_visibility(visible::Bool) = ccall((:setConsoleCursorVisibilit
 
 function get_console_cursor_pos()
     coord = ccall((:getConsoleCursorPos, dllName), Coord, ())
+    (coord.X, coord.Y)
+end
+
+function getconsoledims()
+    coord = ccall((:getConsoleDims, dllName), Coord, ())
     (coord.X, coord.Y)
 end
 

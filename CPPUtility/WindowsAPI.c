@@ -25,6 +25,15 @@ Coord getConsoleCursorPos() {
     return (Coord) { screenBufferInfo.dwCursorPosition.X, screenBufferInfo.dwCursorPosition.Y };
 }
 
+Coord getConsoleDims() {
+    CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
+    HANDLE hStd = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (!GetConsoleScreenBufferInfo(hStd, &screenBufferInfo)) {
+        return (Coord) { -1, -1 };
+    }
+    return (Coord) { screenBufferInfo.dwSize.X, screenBufferInfo.dwSize.Y };
+}
+
 long getLastError() {
     return GetLastError();
 }
@@ -36,7 +45,7 @@ int clearScreen() {
 int setConsoleCursorVisibility(int visible) {
     HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
     CONSOLE_CURSOR_INFO cursorInfo;
-    GetConsoleCursorInfo(out, &cursorInfo);
+    if(!GetConsoleCursorInfo(out, &cursorInfo)) return 0;
     cursorInfo.bVisible = visible;
     return SetConsoleCursorInfo(out, &cursorInfo);
 }
