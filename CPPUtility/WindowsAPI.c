@@ -31,7 +31,11 @@ Coord getConsoleDims() {
     if (!GetConsoleScreenBufferInfo(hStd, &screenBufferInfo)) {
         return (Coord) { -1, -1 };
     }
-    return (Coord) { screenBufferInfo.dwSize.X, screenBufferInfo.dwSize.Y };
+
+    return (Coord) { 
+        screenBufferInfo.srWindow.Right - screenBufferInfo.srWindow.Left + 1, 
+        screenBufferInfo.srWindow.Bottom - screenBufferInfo.srWindow.Top + 1
+    };
 }
 
 long getLastError() {
