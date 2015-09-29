@@ -225,10 +225,13 @@ xcopy /I /Y "$(ProjectDir)CPPUtility.jl" "$(SolutionDir)..\..\Game"</Command>
     <ClCompile Include="WindowsAPI.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Common.h" />
+    <ClInclude Include="CPPUtility.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CPPUtility.jl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
