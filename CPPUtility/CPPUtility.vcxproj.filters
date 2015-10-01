@@ -6,6 +6,7 @@
   <ItemGroup>
     <None Include="CPPUtility.jl" />
     <None Include="CPPUtility_Extended.jl" />
+    <None Include="keycodes.jl" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CPPUtility.h" />
