@@ -16,4 +16,6 @@ DLLINTERFACE Coord getConsoleCursorPos();
 DLLINTERFACE Coord getConsoleDims();
 DLLINTERFACE long getLastError();
 DLLINTERFACE int clearScreen();
-DLLINTERFACE int setConsoleCursorVisibility(int visible);
+DLLINTERFACE int setConsoleCursorVisibility(int visible); 
+DLLINTERFACE unsigned int sendKeyDown(int keycode);
+DLLINTERFACE unsigned int sendKeyUp(int keycode);

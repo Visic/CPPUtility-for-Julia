@@ -141,8 +141,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /Y "$(OutputPath)$(TargetName).dll" "$(SolutionDir)..\..\Game"
-xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)..\..\Game"</Command>
+      <Command>xcopy /I /Y "$(OutputPath)*.dll" "$(SolutionDir)Dist"
+xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)Dist"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -196,8 +196,8 @@ xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)..\..\Game"</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /Y "$(OutputPath)$(TargetName).dll" "$(SolutionDir)..\..\Game"
-xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)..\..\Game"</Command>
+      <Command>xcopy /I /Y "$(OutputPath)*.dll" "$(SolutionDir)Dist"
+xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)Dist"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Export|x64'">
@@ -217,8 +217,8 @@ xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)..\..\Game"</Command>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy /I /Y "$(OutputPath)$(TargetName).dll" "$(SolutionDir)..\..\Game"
-xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)..\..\Game"</Command>
+      <Command>xcopy /I /Y "$(OutputPath)*.dll" "$(SolutionDir)Dist"
+xcopy /I /Y "$(ProjectDir)*.jl" "$(SolutionDir)Dist"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>

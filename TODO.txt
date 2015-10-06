@@ -1,0 +1,2 @@
+-Single out mouse buttons in sendKeyDown and sendKeyUp, they need to be special cased for the windows api
+-Consider making sendKeyDown and sendKeyUp take arrays of keys

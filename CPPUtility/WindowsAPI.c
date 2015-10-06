@@ -2,12 +2,12 @@
 #include <Windows.h>
 #include <stdlib.h>
 
-short getKeyState(int keyCode) {
-    return GetKeyState(keyCode);
+short getKeyState(int keycode) {
+    return GetKeyState(keycode);
 }
 
-short getAsyncKeyState(int keyCode) {
-    return GetAsyncKeyState(keyCode);
+short getAsyncKeyState(int keycode) {
+    return GetAsyncKeyState(keycode);
 }
 
 int setConsoleCursorPos(short x, short y) {
@@ -51,4 +51,27 @@ int setConsoleCursorVisibility(int visible) {
     if(!GetConsoleCursorInfo(hStdOut, &cursorInfo)) return 0;
     cursorInfo.bVisible = visible;
     return SetConsoleCursorInfo(hStdOut, &cursorInfo);
+}
+
+unsigned int sendKeyDown(int keycode) {
+    KEYBDINPUT keyboardInput;
+    keyboardInput.wVk = keycode;
+
+    INPUT input;
+    input.ki = keyboardInput;
+    input.type = INPUT_KEYBOARD;
+
+    SendInput(1, &input, sizeof(input));
+}
+
+unsigned int sendKeyUp(int keycode) {
+    KEYBDINPUT keyboardInput;
+    keyboardInput.wVk = keycode;
+    keyboardInput.dwFlags = KEYEVENTF_KEYUP;
+
+    INPUT input;
+    input.ki = keyboardInput;
+    input.type = INPUT_KEYBOARD;
+
+    SendInput(1, &input, sizeof(input));
 }

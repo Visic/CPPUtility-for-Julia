@@ -28,3 +28,8 @@ _ReSharper*/
 *.vssscc
 $tf*/
 PushToGithub.txt
+/CPPUtility.opensdf
+/Dist/CPPUtility.dll
+/Dist/CPPUtility.jl
+/Dist/CPPUtility_Extended.jl
+/Dist/keycodes.jl
