@@ -1,5 +1,5 @@
 module CPPUtility_Extended
-using Reexport
+using Reexport, Keycodes
 
 @reexport using CPPUtility
 export printat
@@ -19,4 +19,9 @@ function printat(msg::AbstractString, x::Integer, y::Integer, color::Symbol)
     printat_helper(str -> print_with_color(color, str), msg, x, y)
 end
 
+function sendkeypress(keycode::Keycodes.KEYCODE, delay_secconds::Number = 0)
+    sendkeydown(keycode)
+    if delay >= 0.001 sleep(delay) end
+    sendkeyup(keycode)
+end
 end
