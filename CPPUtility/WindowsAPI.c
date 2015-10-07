@@ -69,9 +69,9 @@ unsigned int sendKeyDown(int keycode) {
     if (keycode <= 0x06 && keycode != 0x03) {
         MOUSEINPUT mouseInput;
         memset(&mouseInput, 0, sizeof(mouseInput));
-        if (keycode == 0x01) mouseInput.mouseData = MOUSEEVENTF_LEFTDOWN;
-        if (keycode == 0x02) mouseInput.mouseData = MOUSEEVENTF_RIGHTDOWN;
-        if (keycode == 0x04) mouseInput.mouseData = MOUSEEVENTF_MIDDLEDOWN;
+        if (keycode == 0x01) mouseInput.dwFlags = MOUSEEVENTF_LEFTDOWN;
+        if (keycode == 0x02) mouseInput.dwFlags = MOUSEEVENTF_RIGHTDOWN;
+        if (keycode == 0x04) mouseInput.dwFlags = MOUSEEVENTF_MIDDLEDOWN;
         if (keycode == 0x05) {
             mouseInput.dwFlags = MOUSEEVENTF_XDOWN;
             mouseInput.mouseData = XBUTTON1;
@@ -100,9 +100,9 @@ unsigned int sendKeyUp(int keycode) {
     if (keycode <= 0x06 && keycode != 0x03) {
         MOUSEINPUT mouseInput;
         memset(&mouseInput, 0, sizeof(mouseInput));
-        if (keycode == 0x01) mouseInput.mouseData = MOUSEEVENTF_LEFTUP;
-        if (keycode == 0x02) mouseInput.mouseData = MOUSEEVENTF_RIGHTUP;
-        if (keycode == 0x04) mouseInput.mouseData = MOUSEEVENTF_MIDDLEUP;
+        if (keycode == 0x01) mouseInput.dwFlags = MOUSEEVENTF_LEFTUP;
+        if (keycode == 0x02) mouseInput.dwFlags = MOUSEEVENTF_RIGHTUP;
+        if (keycode == 0x04) mouseInput.dwFlags = MOUSEEVENTF_MIDDLEUP;
         if (keycode == 0x05) {
             mouseInput.dwFlags = MOUSEEVENTF_XUP;
             mouseInput.mouseData = XBUTTON1;
