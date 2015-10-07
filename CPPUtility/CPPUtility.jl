@@ -1,6 +1,6 @@
 module CPPUtility
 using Keycodes
-export getkeystate, get_async_key_state, set_console_cursor_pos, get_console_cursor_pos, getlasterror, clearscreen, set_console_cursor_visibility, getconsoledims, sendkeydown, sendkeyup
+export getkeystate, get_async_key_state, set_console_cursor_pos, get_console_cursor_pos, getlasterror, clearscreen, set_console_cursor_visibility, getconsoledims, sendkeydown, sendkeyup, setcursorpos, getcursorpos
 
 const dllName = "CPPUtility.dll"
 
@@ -17,6 +17,12 @@ clearscreen() = ccall((:clearScreen, dllName), Int32, ())
 set_console_cursor_visibility(visible::Bool) = ccall((:setConsoleCursorVisibility, dllName), Int32, (Int32,), Int32(visible))
 sendkeydown(keycode::Keycodes.KEYCODE) = ccall((:sendKeyDown, dllName), UInt32, (Int32,), keycode)
 sendkeyup(keycode::Keycodes.KEYCODE) = ccall((:sendKeyUp, dllName), UInt32, (Int32,), keycode)
+setcursorpos(x::Integer, y::Integer) = ccall((:setCursorPos, dllName), Int32, (Int32, Int32), x, y)
+
+function getcursorpos() 
+    coord = ccall((:getCursorPos, dllName), Coord, ())
+    (coord.X, coord.Y)
+end
 
 function get_console_cursor_pos()
     coord = ccall((:getConsoleCursorPos, dllName), Coord, ())

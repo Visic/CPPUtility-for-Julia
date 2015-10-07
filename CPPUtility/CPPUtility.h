@@ -14,6 +14,8 @@ DLLINTERFACE short getAsyncKeyState(int keycode);
 DLLINTERFACE int setConsoleCursorPos(short x, short y);
 DLLINTERFACE Coord getConsoleCursorPos();
 DLLINTERFACE Coord getConsoleDims();
+DLLINTERFACE int setCursorPos(int x, int y);
+DLLINTERFACE Coord getCursorPos();
 DLLINTERFACE long getLastError();
 DLLINTERFACE int clearScreen();
 DLLINTERFACE int setConsoleCursorVisibility(int visible); 
