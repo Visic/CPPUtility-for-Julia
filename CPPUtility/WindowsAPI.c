@@ -86,7 +86,8 @@ unsigned int sendKeyDown(int keycode) {
     } else {
         KEYBDINPUT keyboardInput;
         memset(&keyboardInput, 0, sizeof(keyboardInput));
-        keyboardInput.wVk = keycode;
+        keyboardInput.dwFlags = KEYEVENTF_SCANCODE;
+        keyboardInput.wScan = MapVirtualKeyW(keycode, MAPVK_VK_TO_VSC);
 
         input.ki = keyboardInput;
         input.type = INPUT_KEYBOARD;
@@ -117,8 +118,8 @@ unsigned int sendKeyUp(int keycode) {
     } else {
         KEYBDINPUT keyboardInput;
         memset(&keyboardInput, 0, sizeof(keyboardInput));
-        keyboardInput.wVk = keycode;
-        keyboardInput.dwFlags = KEYEVENTF_KEYUP;
+        keyboardInput.dwFlags = KEYEVENTF_SCANCODE | KEYEVENTF_KEYUP;
+        keyboardInput.wScan = MapVirtualKeyW(keycode, MAPVK_VK_TO_VSC);
 
         input.ki = keyboardInput;
         input.type = INPUT_KEYBOARD;

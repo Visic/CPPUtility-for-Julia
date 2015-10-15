@@ -2,7 +2,7 @@ module CPPUtility_Extended
 using Reexport, Keycodes
 
 @reexport using CPPUtility
-export printat
+export printat, sendkeypress
 
 function printat_helper(printFunction::Function, msg::AbstractString, x::Integer, y::Integer)
     currentPos = get_console_cursor_pos()
@@ -21,7 +21,7 @@ end
 
 function sendkeypress(keycode::Keycodes.KEYCODE, delay_secconds::Number = 0)
     sendkeydown(keycode)
-    if delay >= 0.001 sleep(delay) end
+    if delay_secconds >= 0.001 sleep(delay_secconds) end
     sendkeyup(keycode)
 end
 end
