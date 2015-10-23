@@ -19,7 +19,13 @@ function printat(msg::AbstractString, x::Integer, y::Integer, color::Symbol)
     printat_helper(str -> print_with_color(color, str), msg, x, y)
 end
 
-function sendkeypress(keycode::Keycodes.KEYCODE, delay_secconds::Number = 0)
+function sendkeypress(keycode::Keycodes.KEYBOARD, delay_secconds::Number = 0)
+    sendkeydown(keycode)
+    if delay_secconds >= 0.001 sleep(delay_secconds) end
+    sendkeyup(keycode)
+end
+
+function sendkeypress(keycode::Keycodes.MOUSE, delay_secconds::Number = 0)
     sendkeydown(keycode)
     if delay_secconds >= 0.001 sleep(delay_secconds) end
     sendkeyup(keycode)
